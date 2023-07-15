@@ -120,6 +120,7 @@ PlasmaCore.ColorScope {
             width: parent.width / 3
 
             focus: true //StackView is an implicit focus scope, so we need to give this focus so the item inside will have it
+            clip: true
 
             Timer {
                 //SDDM has a bug in 0.13 where even though we set the focus on the right item within the window, the window doesn't have focus
