@@ -4,6 +4,7 @@ import QtQuick 2.2
 import QtQuick.Layouts 1.2
 import QtQuick.Controls 2.4
 import QtQuick.Controls.Styles 1.4
+import QtGraphicalEffects 1.13
 
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
@@ -37,9 +38,6 @@ SessionManagementScreen {
         var username = showUsernamePrompt ? userNameInput.text : userList.selectedUser
         var password = passwordBox.text
 
-        //this is partly because it looks nicer
-        //but more importantly it works round a Qt bug that can trigger if the app is closed with a TextField focused
-        //DAVE REPORT THE FRICKING THING AND PUT A LINK
         loginButton.forceActiveFocus();
         loginRequest(username, password);
     }
@@ -100,7 +98,6 @@ SessionManagementScreen {
     Button {
         id: loginButton
         text: i18nd("plasma_lookandfeel_org.kde.lookandfeel", "Log In")
-        enabled: passwordBox.text != ""
 
         Layout.topMargin: 20
         Layout.fillWidth: true
@@ -118,19 +115,38 @@ SessionManagementScreen {
             elide: Text.ElideRight
         }
 
-        background: Rectangle {
-            id: buttonBackground
-            height: parent.width
-            width: height / 9
-            radius: width / 2
-                rotation: -90
+        background: Item {
+            width: loginButton.width
+            height: loginButton.height
+            
+            layer.enabled: true
+            layer.effect: OpacityMask {
+                maskSource: Item {
+                    width: loginButton.width
+                    height: loginButton.height
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: loginButton.width
+                        height: loginButton.height
+                        radius: loginButton.height
+                    }
+                }
+            }
+
+            Rectangle {
+                id: angledRect
+                width: parent.width * 1.2
+                height: parent.width * 1.2
                 anchors.centerIn: parent
 
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "#032490" }
-            	GradientStop { position: 0.33; color: "#075590" }
-            	GradientStop { position: 1.0; color: "#0b88e7" }
-	    }
+                rotation: 160
+
+                gradient: Gradient {
+                    GradientStop { position: 0.0; color: "#044baf" }
+                    GradientStop { position: 0.4; color: "#075e90" }
+                    GradientStop { position: 1.0; color: "#0975b1" }
+                }
+            }
         }
 
         onClicked: startLogin();

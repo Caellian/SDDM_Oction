@@ -8,6 +8,10 @@ TextField {
     palette.text: config.color
     font.pointSize: config.fontSize
     font.family: config.font
+
+    leftPadding: 20
+    rightPadding: 20
+
     background: Rectangle {
         color: "#1E2326"
         opacity: 0.7

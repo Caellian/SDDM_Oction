@@ -36,7 +36,7 @@ Item {
     implicitWidth: Math.max(iconSize + units.largeSpacing * 2, label.contentWidth)
     implicitHeight: iconSize + units.smallSpacing + label.implicitHeight
 
-    opacity: activeFocus || containsMouse ? 1.5 : 0.97
+    opacity: activeFocus || containsMouse ? 1.5 : 0.8
     Behavior on opacity {
         PropertyAnimation { // OpacityAnimator makes it turn black at random intervals
             duration: units.longDuration * 2

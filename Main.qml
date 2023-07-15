@@ -164,7 +164,7 @@ PlasmaCore.ColorScope {
                 actionItems: [
                     ActionButton {
                         iconSource: Qt.resolvedUrl("assets/suspend.svgz")
-                        text: i18ndc("plasma_lookandfeel_org.kde.lookandfeel","Suspend to RAM","Sleep")                        
+                        text: i18nd("plasma_lookandfeel_org.kde.lookandfeel","Sleep")                        
                         onClicked: sddm.suspend()
                         enabled: sddm.canSuspend
                         visible: !inputPanel.keyboardActive
@@ -185,7 +185,7 @@ PlasmaCore.ColorScope {
                     },
                     ActionButton {
                         iconSource: Qt.resolvedUrl("assets/change_user.svgz")
-                        text: i18nd("plasma_lookandfeel_org.kde.lookandfeel","Different User")
+                        text: i18nd("plasma_lookandfeel_org.kde.lookandfeel","Change User")
                         onClicked: mainStack.push(userPromptComponent)
                         enabled: true
                         visible: !userListComponent.showUsernamePrompt && !inputPanel.keyboardActive
@@ -344,7 +344,7 @@ PlasmaCore.ColorScope {
                 actionItems: [
                     ActionButton {
                         iconSource: Qt.resolvedUrl("assets/suspend.svgz")
-                        text: i18ndc("plasma_lookandfeel_org.kde.lookandfeel","Suspend to RAM","Sleep")                        
+                        text: i18nd("plasma_lookandfeel_org.kde.lookandfeel","Sleep")                        
                         onClicked: sddm.suspend()
                         enabled: sddm.canSuspend
                         visible: !inputPanel.keyboardActive
